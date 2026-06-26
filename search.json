@@ -1,0 +1,44 @@
+[
+  {
+    "objectID": "houston_temperature.html",
+    "href": "houston_temperature.html",
+    "title": "Decades of Houston Heat: A Seasonal Analysis of Daily High Temperatures",
+    "section": "",
+    "text": "This document analyzes three decades of daily high temperatures in Houston, Texas, spanning from January 1, 1996, to December 31, 2025. The data is retrieved from the Open-Meteo Historical Weather API, which compiles high-resolution meteorological reanalysis data.\nHouston is known for its humid subtropical climate (Köppen classification Cfa), characterized by hot, humid summers and mild winters. This analysis visualizes the daily maximum temperatures, highlights seasonal patterns, and explores the meteorological reasons behind temperature variability and extreme weather events."
+  },
+  {
+    "objectID": "houston_temperature.html#introduction",
+    "href": "houston_temperature.html#introduction",
+    "title": "Decades of Houston Heat: A Seasonal Analysis of Daily High Temperatures",
+    "section": "",
+    "text": "This document analyzes three decades of daily high temperatures in Houston, Texas, spanning from January 1, 1996, to December 31, 2025. The data is retrieved from the Open-Meteo Historical Weather API, which compiles high-resolution meteorological reanalysis data.\nHouston is known for its humid subtropical climate (Köppen classification Cfa), characterized by hot, humid summers and mild winters. This analysis visualizes the daily maximum temperatures, highlights seasonal patterns, and explores the meteorological reasons behind temperature variability and extreme weather events."
+  },
+  {
+    "objectID": "houston_temperature.html#cool-features-climate-insights",
+    "href": "houston_temperature.html#cool-features-climate-insights",
+    "title": "Decades of Houston Heat: A Seasonal Analysis of Daily High Temperatures",
+    "section": "Cool Features & Climate Insights",
+    "text": "Cool Features & Climate Insights\nLooking closely at the scatter plot, several fascinating climatic and meteorological patterns emerge:\n\n1. The Winter vs. Summer Variability Asymmetry\nA striking feature of the scatter plot is the geometric envelope of the data points. The vertical spread of temperatures is remarkably wide during the winter months, while it is extremely narrow and dense during the summer.\n\nWinter Variability (December – February): January and February have standard deviations of ~9.75°F and ~9.81°F respectively. Daily high temperatures in February range from a freezing 29°F to a balmy 84°F (a 55°F range).\nSummer Consistency (June – August): July and August have standard deviations of only ~4.39°F and ~4.68°F. In July, daily highs almost never drop below 77°F or rise above 102°F (a narrow 25°F range).\nThe Meteorological Reason:\n\nDuring winter, the jet stream dips south, allowing cold, dry Continental Polar (cP) air masses from Canada to sweep into Texas as cold fronts. However, these are frequently pushed back by warm, moist Maritime Tropical (mT) air masses from the Gulf of Mexico. The struggle between these air masses causes rapid, extreme temperature swings.\nDuring summer, the Bermuda High (a large subtropical high-pressure system) expands over the Gulf of Mexico and Texas. This high-pressure system caps the atmosphere, preventing vertical development, blocking cold fronts from moving south, and trapping heat. Consequently, summer days in Houston are consistently hot and humid, with very little day-to-day temperature variation.\n\n\n\n\n2. The Seasonal Cycle & The Cyclic Trendline\nThe trendline (solid cyan curve) represents a Generalized Additive Model (GAM) using a cyclic cubic spline. This ensures that the transition between December and January is mathematically continuous and smooth. * The trendline tracks the seasonal median high, rising from a low of ~62.3°F in mid-January to a peak of ~92.3°F in August, before falling steadily back down. * The peak of the trendline occurs in August, which is slightly delayed relative to the summer solstice (June 21). This lag is known as seasonal lag and is caused by the thermal inertia of the Earth’s surface and the nearby Gulf of Mexico, which takes several months to absorb heat and reach its maximum temperature.\n\n\n3. Historic Climatic Anomalies\nThe plot successfully highlights several key extreme events that deviate significantly from the seasonal norms: * Winter Storm Uri (February 15, 2021): The absolute coldest daily high in the 30-year dataset is 29.0°F, recorded during this severe cold wave. A historic polar outbreak pushed arctic air all the way to the Gulf Coast, freezing the state and placing unprecedented stress on the Texas power grid. * The Christmas Freeze (December 23, 2022): A daily high of 31.0°F occurred during a rapid winter outbreak, where temperatures plummeted by 40 degrees in a matter of hours. * Labor Day Heatwave (September 4, 2000): The absolute hottest temperature in the dataset is 107.2°F, recorded during a historic late-summer heatwave. * August 2023 Heatwave (August 27, 2023): A daily high of 107.1°F was recorded during a persistent heat dome, which brought record-breaking temperatures and drought to much of Texas."
+  },
+  {
+    "objectID": "yearly_average.html",
+    "href": "yearly_average.html",
+    "title": "Houston Annual Temperature Trends",
+    "section": "",
+    "text": "This analysis tracks how Houston’s average annual high temperature has evolved over 30 years (1996-2025), revealing long-term climate trends in the region."
+  },
+  {
+    "objectID": "yearly_average.html#yearly-average-temperature-analysis",
+    "href": "yearly_average.html#yearly-average-temperature-analysis",
+    "title": "Houston Annual Temperature Trends",
+    "section": "",
+    "text": "This analysis tracks how Houston’s average annual high temperature has evolved over 30 years (1996-2025), revealing long-term climate trends in the region."
+  },
+  {
+    "objectID": "yearly_average.html#key-observations",
+    "href": "yearly_average.html#key-observations",
+    "title": "Houston Annual Temperature Trends",
+    "section": "Key Observations",
+    "text": "Key Observations\nThe yearly average temperature analysis reveals important climate patterns:\n\nOverall Warming Trend: The dashed orange line shows a clear upward trajectory, indicating Houston has experienced warming over the past three decades\nYear-to-Year Variability: Despite the overall trend, individual years show natural fluctuations in average temperatures\nColor Gradient: Cooler years appear in blue, while warmer years shift toward red/orange, providing a visual representation of temperature changes\nDecade Perspective: The trend line quantifies the rate of change, typically measured in degrees per decade\n\nThis data supports broader climate science findings about temperature increases in urban areas and the Gulf Coast region."
+  }
+]
