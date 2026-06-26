@@ -1,0 +1,27 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Houston Temperature Analysis"
+  description: "30 Years of Daily Temperature Patterns"
+  navbar:
+    title: "Houston Heat"
+    left:
+      - text: "Home"
+        href: houston_temperature.qmd
+  back-to-top-navigation: true
+  page-footer:
+    left: "© 2026 Oluchi Nnadi"
+    right: "Data source: Open-Meteo Historical Weather API"
+  
+format:
+  html:
+    theme: 
+      light: lux
+      dark: darkly
+    css: styles.css
+    toc: true
+    code-fold: show
+    embed-resources: true
+    smooth-scroll: true

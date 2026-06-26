@@ -1,0 +1,219 @@
+/* Custom styling for Houston Temperature Analysis */
+
+:root {
+  --primary-color: #d84315;
+  --secondary-color: #ff6f00;
+  --accent-color: #ffa726;
+}
+
+/* Body and overall layout */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background-color: #f8f9fa;
+}
+
+/* Header and title styling */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  margin-top: 1.5em;
+}
+
+h1 {
+  color: var(--primary-color);
+  border-bottom: 3px solid var(--secondary-color);
+  padding-bottom: 0.5em;
+  margin-bottom: 1em;
+}
+
+h2 {
+  color: var(--primary-color);
+  margin-top: 2em;
+}
+
+/* Navbar enhancement */
+.navbar {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+}
+
+.navbar-title {
+  font-weight: 700;
+  font-size: 1.3em;
+  color: var(--primary-color) !important;
+}
+
+/* Main content area */
+.quarto-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 8px;
+  padding: 2em;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Code blocks */
+.cell-code {
+  background-color: #f4f4f4;
+  border-left: 4px solid var(--secondary-color);
+  padding: 1em;
+  border-radius: 4px;
+}
+
+pre {
+  background-color: #f8f8f8;
+  border-radius: 6px;
+  padding: 1.2em;
+  overflow-x: auto;
+}
+
+code {
+  background-color: #f0f0f0;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-size: 0.95em;
+}
+
+/* Links */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+
+a:hover {
+  color: var(--accent-color);
+  border-bottom: 1px solid var(--accent-color);
+}
+
+/* Blockquotes */
+blockquote {
+  border-left: 4px solid var(--secondary-color);
+  padding-left: 1em;
+  margin-left: 0;
+  color: #555;
+  font-style: italic;
+}
+
+/* Tables */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5em 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+thead {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+  background-color: #f0f0f0;
+  transition: background-color 0.2s ease;
+}
+
+td, th {
+  padding: 0.75em 1em;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Figure and image styling */
+figure {
+  text-align: center;
+  margin: 2em 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+figcaption {
+  color: #666;
+  font-size: 0.9em;
+  margin-top: 0.5em;
+  font-style: italic;
+}
+
+/* Sidebar and TOC */
+#quarto-sidebar {
+  background: white;
+  border-right: 1px solid #e0e0e0;
+}
+
+.toc {
+  background: white;
+  border-radius: 6px;
+  padding: 1.2em;
+}
+
+.toc ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.toc a {
+  color: var(--primary-color);
+  padding: 0.4em 0;
+  display: block;
+}
+
+.toc a:hover {
+  color: var(--accent-color);
+}
+
+/* Footer */
+.footer {
+  border-top: 2px solid #e0e0e0;
+  padding-top: 2em;
+  margin-top: 3em;
+  color: #666;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+/* Responsive design improvements */
+@media (max-width: 768px) {
+  .quarto-container {
+    padding: 1em;
+  }
+  
+  h1 {
+    font-size: 1.8em;
+  }
+  
+  h2 {
+    font-size: 1.4em;
+  }
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1a1a1a;
+  }
+  
+  .quarto-container {
+    background: #2d2d2d;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+  
+  code, pre {
+    background-color: #1e1e1e;
+    color: #e8e8e8;
+  }
+  
+  table {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+}
