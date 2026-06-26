@@ -215,3 +215,14 @@ figcaption {
   }
 }
 
+/* Text selection color - orange */
+::selection {
+  background-color: #ff9800;
+  color: #1a1a1a;
+}
+
+::-moz-selection {
+  background-color: #ff9800;
+  color: #1a1a1a;
+}
+

@@ -2,7 +2,6 @@
 title: "Decades of Houston Heat: A Seasonal Analysis of Daily High Temperatures"
 author: "Oluchi Nnadi"
 date: "2026-06-23"
-runtime: shiny
 format:
   html:
     theme: cosmo
@@ -17,10 +16,6 @@ This document analyzes three decades of daily high temperatures in Houston, Texa
 
 Houston is known for its humid subtropical climate (Köppen classification *Cfa*), characterized by hot, humid summers and mild winters. This analysis visualizes the daily maximum temperatures, highlights seasonal patterns, and explores the meteorological reasons behind temperature variability and extreme weather events.
 
-## Data & Visualization Script
-
-Use the controls below to filter the data by year range and explore how Houston's temperature patterns have evolved over the past three decades.
-
 ```{r}
 #| label: load-and-plot
 #| warning: false
@@ -33,7 +28,6 @@ library(jsonlite)
 library(dplyr)
 library(lubridate)
 library(ggplot2)
-library(shiny)
 
 # 1. Load Data
 # We use a cached local file if it exists, otherwise we fetch from the API.
@@ -80,22 +74,8 @@ extremes <- data.frame(
   nudge_y = c(-5, 4.5, 4.5, -5)
 )
 
-# 3. Create interactive year range slider
-sliderInput("year_range", 
-            label = "Select Year Range:",
-            min = min(data$year), 
-            max = max(data$year),
-            value = c(min(data$year), max(data$year)),
-            sep = "")
-
-# Filter data based on selected year range
-filtered_data <- reactive({
-  data %>% filter(year >= input$year_range[1], year <= input$year_range[2])
-})
-
-# 4. Create the Scatter Plot
-renderPlot({
-ggplot(filtered_data(), aes(x = decimal_month, y = temp)) +
+# 3. Create the Scatter Plot
+ggplot(data, aes(x = decimal_month, y = temp)) +
   # Continuous scatter of daily high temps colored by year (older to newer)
   geom_point(aes(color = year), alpha = 0.2, size = 0.8) +
   # Plasma palette provides beautiful contrast and clearly depicts the timeline
@@ -159,7 +139,6 @@ ggplot(filtered_data(), aes(x = decimal_month, y = temp)) +
     legend.text = element_text(size = 8.5),
     plot.caption = element_text(size = 7.5, color = "#bdc3c7", hjust = 0, margin = margin(t = 15))
   )
-}, width = 1000, height = 650)
 ```
 
 ## Cool Features & Climate Insights

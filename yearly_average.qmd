@@ -1,0 +1,132 @@
+---
+title: "Houston Annual Temperature Trends"
+author: "Oluchi Nnadi"
+date: "2026-06-23"
+format:
+  html:
+    theme: cosmo
+    toc: true
+    code-fold: show
+    embed-resources: true
+---
+
+## Yearly Average Temperature Analysis
+
+This analysis tracks how Houston's average annual high temperature has evolved over 30 years (1996-2025), revealing long-term climate trends in the region.
+
+```{r}
+#| label: yearly-average
+#| warning: false
+#| message: false
+#| fig-width: 12
+#| fig-height: 6
+#| echo: false
+
+library(jsonlite)
+library(dplyr)
+library(lubridate)
+library(ggplot2)
+
+# 1. Load Data
+json_file <- "houston_temp.json"
+if (file.exists(json_file)) {
+  raw_data <- fromJSON(json_file)
+} else {
+  url <- "http://archive-api.open-meteo.com/v1/archive?latitude=29.7633&longitude=-95.3633&start_date=1996-01-01&end_date=2025-12-31&daily=temperature_2m_max&temperature_unit=fahrenheit&timezone=America%2FChicago"
+  raw_data <- fromJSON(url)
+}
+
+# 2. Convert to data frame and calculate yearly averages
+yearly_avg <- raw_data$daily |> 
+  as.data.frame() |> 
+  mutate(
+    date = as.Date(time),
+    year = year(date),
+    temp = temperature_2m_max
+  ) |>
+  filter(!is.na(temp)) |>
+  group_by(year) |>
+  summarise(
+    avg_temp = mean(temp),
+    min_temp = min(temp),
+    max_temp = max(temp),
+    .groups = 'drop'
+  )
+
+# 3. Calculate trend line
+trend_model <- lm(avg_temp ~ year, data = yearly_avg)
+trend_data <- data.frame(
+  year = yearly_avg$year,
+  trend = predict(trend_model)
+)
+
+# 4. Create the plot
+ggplot(yearly_avg, aes(x = year, y = avg_temp)) +
+  # Main line connecting yearly averages
+  geom_line(color = "#ffb74d", linewidth = 1.2, alpha = 0.8) +
+  
+  # Points for each year
+  geom_point(aes(fill = avg_temp), color = "#ff9800", size = 4, shape = 21, stroke = 1.5) +
+  
+  # Color gradient for points (cooler to warmer)
+  scale_fill_gradient(
+    low = "#4a90e2",
+    high = "#ff6f00",
+    name = "Avg Temp (°F)"
+  ) +
+  
+  # Linear trend line showing overall direction
+  geom_line(data = trend_data, aes(y = trend), 
+            color = "#ff6f00", linetype = "dashed", linewidth = 0.8, alpha = 0.7) +
+  
+  # Annotations for trend
+  annotate("text", x = 1998, y = max(yearly_avg$avg_temp) - 0.5,
+           label = sprintf("Trend: +%.2f°F per decade", 
+                          coef(trend_model)[2] * 10),
+           size = 3.5, color = "#ff6f00", fontface = "bold", hjust = 0) +
+  
+  # Scales and labels
+  scale_x_continuous(
+    breaks = seq(1996, 2025, 5),
+    labels = seq(1996, 2025, 5)
+  ) +
+  scale_y_continuous(
+    limits = c(73, 80),
+    breaks = seq(73, 80, 1),
+    labels = paste0(seq(73, 80, 1), "°F")
+  ) +
+  
+  labs(
+    title = "Houston Average Annual High Temperature Trend (1996-2025)",
+    subtitle = "30-Year Analysis: How Houston's Climate Is Changing",
+    x = "Year",
+    y = "Average Annual High Temperature (°F)",
+    caption = "Data Source: Open-Meteo Historical Weather API\nTrendline shows overall warming pattern over the 30-year period."
+  ) +
+  
+  theme_minimal(base_family = "sans") +
+  theme(
+    plot.title = element_text(face = "bold", size = 15, color = "#2c3e50", margin = margin(b = 6)),
+    plot.subtitle = element_text(size = 11, color = "#7f8c8d", margin = margin(b = 15)),
+    axis.title = element_text(face = "bold", size = 11, color = "#34495e"),
+    axis.text = element_text(size = 10, color = "#2c3e50"),
+    panel.grid.minor = element_blank(),
+    panel.grid.major.x = element_line(color = "#ecf0f1", linewidth = 0.5),
+    panel.grid.major.y = element_line(color = "#ecf0f1", linewidth = 0.5),
+    legend.position = "right",
+    legend.title = element_text(face = "bold", size = 10),
+    legend.text = element_text(size = 9),
+    plot.caption = element_text(size = 8, color = "#bdc3c7", hjust = 0, margin = margin(t = 15))
+  )
+```
+
+## Key Observations
+
+The yearly average temperature analysis reveals important climate patterns:
+
+- **Overall Warming Trend**: The dashed orange line shows a clear upward trajectory, indicating Houston has experienced warming over the past three decades
+- **Year-to-Year Variability**: Despite the overall trend, individual years show natural fluctuations in average temperatures
+- **Color Gradient**: Cooler years appear in blue, while warmer years shift toward red/orange, providing a visual representation of temperature changes
+- **Decade Perspective**: The trend line quantifies the rate of change, typically measured in degrees per decade
+
+This data supports broader climate science findings about temperature increases in urban areas and the Gulf Coast region.

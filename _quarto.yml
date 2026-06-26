@@ -10,6 +10,8 @@ website:
     left:
       - text: "Home"
         href: houston_temperature.qmd
+      - text: "Yearly Trends"
+        href: yearly_average.qmd
   back-to-top-navigation: true
   page-footer:
     left: "© 2026 Oluchi Nnadi"
